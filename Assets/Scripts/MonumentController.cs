@@ -4,59 +4,126 @@ using UnityEngine;
 
 public class MonumentController : MonoBehaviour
 {
+    public float m_Speed;
+    Vector3 currentPosition; 
+    public bool m_canMoveLeft;
+    public bool m_canMoveRight;
+    bool moveLeft;
+    bool moveRight;
+    public GameObject LightSensor;
+    public LayerMask layerMask;
+    bool hit; 
     public Material normalMat, greenMat, redMat;
-    Rigidbody m_Rb;
-    public float m_Speed = 2f;
+    public bool touchingMonument; 
 
-    public bool m_moveLeft;
-    [SerializeField]
-    bool m_moveRight;
-    [SerializeField]
-    bool canMove; 
     void Start()
     {
-        m_Rb = GetComponent<Rigidbody>();
+        currentPosition = transform.position;
     }
 
     void Update()
     {
-        if (canMove)
+        RayCasting(); 
+       
+        if (moveLeft)
         {
-            m_Speed = 2; 
-            if (m_moveLeft)
+            Vector3 endPosition = currentPosition + Vector3.right * 10;
+            if (transform.position != endPosition)
             {
-                MoveToLeftPosition();
+                transform.position = Vector3.MoveTowards(transform.position, endPosition, m_Speed * Time.deltaTime);
             }
-            if (m_moveRight)
+            else
             {
-                MoveToRightPosition();
+                moveLeft = false;
+                currentPosition = transform.position;
             }
         }
-        else
+
+        if (moveRight)
         {
-            m_Speed = 0;
+            Vector3 endPosition = currentPosition + Vector3.right * -10;
+            if (transform.position != endPosition)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, endPosition, m_Speed * Time.deltaTime);
+            }
+            else
+            {
+                moveRight = false;
+                currentPosition = transform.position;
+            }
         }
-        
     }
 
     public void MoveToLeftPosition()
     {
-        Vector3 m_Translate = new Vector3(1, 0, 0);
-        m_Rb.transform.Translate(m_Translate * Time.deltaTime * m_Speed);
+        moveLeft = true; 
     }
 
     public void MoveToRightPosition()
     {
-        Vector3 m_Translate = new Vector3(-1, 0, 0);
-        m_Rb.transform.Translate(m_Translate * Time.deltaTime * m_Speed);
+        moveRight = true; 
     }
 
+    void RayCasting()
+    {
+        Ray ray = new Ray(LightSensor.transform.position, transform.forward);
+        RaycastHit hitData;
+        if (Physics.Raycast(ray, out hitData, 10, layerMask))
+        {
+            hit = true;
+            LightSensor.GetComponent<MeshRenderer>().material = greenMat;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LeftPosition" && other.tag == "RightPosition")
+        if (other.gameObject.tag == "Player")
         {
-            canMove = false; 
-            Destroy(other.gameObject, 2f); 
+            touchingMonument = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "LeftPosition")
+        {
+            m_canMoveRight = true;
+            m_canMoveLeft = false;
+        }
+        
+        if (other.tag == "RightPosition")
+        {
+            m_canMoveLeft = true;
+            m_canMoveRight = false;
+        }
+        
+        if (other.tag == "MiddlePosition")
+        {
+            m_canMoveLeft = true;
+            m_canMoveRight = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "LeftPosition")
+        {
+            m_canMoveRight = false;
+        }
+
+        if (other.tag == "RightPosition")
+        {
+            m_canMoveLeft = false;
+        }
+
+        if (other.tag == "MiddlePosition")
+        {
+            m_canMoveLeft = false;
+            m_canMoveRight = false;
+        }
+
+        if (other.gameObject.tag == "Player")
+        {
+            touchingMonument = false;
         }
     }
 }
