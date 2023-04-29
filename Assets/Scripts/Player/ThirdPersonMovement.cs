@@ -21,7 +21,7 @@ public class ThirdPersonMovement : Subject
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
-    
+    public GameObject ReadButton; 
 
     void Update()
     {
@@ -69,12 +69,18 @@ public class ThirdPersonMovement : Subject
             Destroy(other.gameObject, 0.25f); 
         }
 
-        
-        
+        if (other.gameObject.tag == "Script")
+        {
+            ReadButton.SetActive(true); 
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.tag == "Script")
+        {
+            ReadButton.SetActive(false);
+        }
     }
 }

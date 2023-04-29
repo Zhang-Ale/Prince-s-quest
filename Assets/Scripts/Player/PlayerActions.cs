@@ -2,5 +2,6 @@
 public enum PlayerActions
 {
     Jump, 
-    Collect
+    Collect, 
+    Dialogue
 }

@@ -45,6 +45,9 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
                 _audioPlayer.Play();
                 return;
 
+            case (PlayerActions.Dialogue):
+                //set player movement to 0
+
             default:
                 return;         
         }
