@@ -69,3 +69,4 @@ exercise03/ProjectSettings/ProjectVersion.txt
 *.txt
 exercise03/ProjectSettings/ProjectVersion.txt
 exercise06/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+Assets/Scenes/SampleScene.unity
