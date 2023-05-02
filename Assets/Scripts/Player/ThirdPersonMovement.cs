@@ -21,8 +21,6 @@ public class ThirdPersonMovement : Subject
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
-    public GameObject ReadButton; 
-
     void Update()
     {
         //jump
@@ -57,30 +55,6 @@ public class ThirdPersonMovement : Subject
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Collectable")
-        {
-            NotifyObservers(PlayerActions.Collect); 
-            //destroy the collectable in 0.25s
-            Destroy(other.gameObject, 0.25f); 
-        }
-
-        if (other.gameObject.tag == "Script")
-        {
-            ReadButton.SetActive(true); 
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Script")
-        {
-            ReadButton.SetActive(false);
         }
     }
 }

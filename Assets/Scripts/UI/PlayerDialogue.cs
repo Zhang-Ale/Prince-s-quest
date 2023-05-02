@@ -10,18 +10,16 @@ public class PlayerDialogue : Subject
     public TextMeshProUGUI dialogBoxText;
     private bool _isPlayerInside;
     public bool talked = false;
-
-
+    public bool talkedWithKing; 
     private void Start()
     {
         dialogue = DialogueSystem.instance;
+        talkedWithKing = false; 
     }
 
     public string[] s = new string[]
     {
-        "Benjamin opens his eyes, finds himself in a deserted alley.:Benjamin",
-        "Who am I...",
-        "Where is this place..."
+        "",
     };
 
     int index = 0;
@@ -39,22 +37,12 @@ public class PlayerDialogue : Subject
                         
                     }
 
-                    if (index == 2)
-                    {
-
-                    }
-
-                    if (index == 3)
-                    {
-
-                    }
-
                     if (index >= s.Length)
                     {
-
                         dialogBox.SetActive(false);
                         dialogBoxText.text = "- Click to continue -";
-                        //allow the player to move
+                        //allow the player to move 
+                        talkedWithKing = true; 
                         return; 
                     }
 
