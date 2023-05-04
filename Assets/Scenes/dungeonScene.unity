@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -401,7 +401,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &25208716392187919
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -423,7 +423,7 @@ Animator:
     'Right wrist'\n\tand more ...\n\tFrom animation clip 'Walking'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &40102002211451627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,7 +3329,7 @@ MonoBehaviour:
   characterController: {fileID: 6769599950314621137}
   speed: 3
   animator: {fileID: 25208716392187919}
-  cameraHolder: {fileID: 0}
+  cameraHolder: {fileID: 3657008800591769047}
   mouseSensitivity: 2
   upLimit: -50
   downLimit: 50
