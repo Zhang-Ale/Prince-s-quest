@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerNarrationSystem : MonoBehaviour, IObserver
 {
@@ -8,14 +9,19 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     [SerializeField] int _jumpCount = 0;
     int _jumpAudioThreshold = 3;
     Coroutine _currentJumpResetRoutine = null;
+    int index; 
 
     AudioSource _audioPlayer;
     public AudioClip _jumpingAudioClip;
-    public AudioClip _collectAudioClip;
-
+    public AudioClip _buttonAudioClip;
+    public AudioClip[] _groundFootstepAudioClip;
+    public AudioClip[] _caveFootstepAudioClip;
+    public AudioClip[] _dungeonFootstepAudioClip;
+    public ThirdPersonMovement TPM; 
     void Awake()
     {
-        _audioPlayer = GetComponent<AudioSource>(); 
+        _audioPlayer = GetComponent<AudioSource>();
+        index = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void OnNotify(PlayerActions action)
@@ -40,13 +46,39 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
                 _currentJumpResetRoutine = StartCoroutine(IJumpResetRoutine());
                 return;
 
-            case (PlayerActions.Collect):
-                _audioPlayer.clip = _collectAudioClip;
+            case (PlayerActions.Walk):
+                if (index == 1)
+                {
+                    _audioPlayer.clip = _groundFootstepAudioClip[Random.Range(0, _groundFootstepAudioClip.Length)];
+                }
+                if (index == 2)
+                {
+                    _audioPlayer.clip = _caveFootstepAudioClip[Random.Range(0, _caveFootstepAudioClip.Length)];
+                }
+                if (index == 3)
+                {
+                    _audioPlayer.clip = _dungeonFootstepAudioClip[Random.Range(0, _dungeonFootstepAudioClip.Length)];
+                }
                 _audioPlayer.Play();
                 return;
 
-            case (PlayerActions.Dialogue):
-                //set player movement to 0
+
+            case (PlayerActions.StopWalk):
+                _audioPlayer.Stop();
+                return;
+
+            case (PlayerActions.Button):
+                _audioPlayer.clip = _buttonAudioClip;
+                _audioPlayer.Play();
+                return;
+
+            case (PlayerActions.DialogueStart):
+                //freeze player movement
+                return;
+
+            case (PlayerActions.DialogueOver):
+                //unfreeze player movement
+                return; 
 
             default:
                 return;         

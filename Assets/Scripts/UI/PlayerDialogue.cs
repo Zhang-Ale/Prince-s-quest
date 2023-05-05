@@ -8,9 +8,10 @@ public class PlayerDialogue : Subject
     DialogueSystem dialogue;
     public GameObject dialogBox;
     public TextMeshProUGUI dialogBoxText;
-    private bool _isPlayerInside;
+    public bool _isPlayerInside;
     public bool talked = false;
-    public bool talkedWithKing; 
+    public bool talkedWithKing;
+    public GameObject acceptButton; 
     private void Start()
     {
         dialogue = DialogueSystem.instance;
@@ -26,31 +27,44 @@ public class PlayerDialogue : Subject
 
     void Update()
     {
+        dialogBox.SetActive(true);
+        NotifyObservers(PlayerActions.DialogueStart);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true; 
         if (_isPlayerInside)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 if(!dialogue.isSpeaking || dialogue.isWaitingForUserInput)
                 {
-                    if (index == 1)
+                    if (index == 8)
                     {
-                        
+                        acceptButton.SetActive(true); 
                     }
-
-                    if (index >= s.Length)
+                    else
                     {
-                        dialogBox.SetActive(false);
-                        dialogBoxText.text = "- Click to continue -";
-                        //allow the player to move 
-                        talkedWithKing = true; 
-                        return; 
-                    }
+                        if (index >= s.Length)
+                        {
+                            dialogBox.SetActive(false);
+                            dialogBoxText.text = "- Teleporting -";
+                            NotifyObservers(PlayerActions.DialogueOver);
+                            talkedWithKing = true;
+                            return;
+                        }
 
-                    Say(s [index]);
-                    index++;
+                        Say(s[index]);
+                        index++;
+                    }                   
                 }
             }
         }
+    }
+    public void AcceptQuest()
+    {
+        NotifyObservers(PlayerActions.Button);
+        Say(s[index]);
+        index++;
+        acceptButton.SetActive(false);
     }
 
     void Say(string s)
@@ -68,14 +82,18 @@ public class PlayerDialogue : Subject
         {
             _isPlayerInside = true;
             dialogBox.SetActive(true);
-            NotifyObservers(PlayerActions.Dialogue);
+            NotifyObservers(PlayerActions.DialogueStart);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             _isPlayerInside = false;
             talked = true;
         }

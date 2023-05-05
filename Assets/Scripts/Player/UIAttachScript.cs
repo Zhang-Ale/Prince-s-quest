@@ -20,7 +20,7 @@ public class UIAttachScript : Subject
     {
         if (other.gameObject.tag == "Collectable")
         {
-            NotifyObservers(PlayerActions.Collect);
+
             Destroy(other.gameObject, 0.25f);
         }
 

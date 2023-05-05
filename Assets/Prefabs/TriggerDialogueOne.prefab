@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &239965625291294782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239965625291294787}
+  - component: {fileID: 239965625291294786}
+  - component: {fileID: 239965625291294785}
+  - component: {fileID: 239965625291294784}
+  - component: {fileID: 239965625291294783}
+  m_Layer: 0
+  m_Name: TriggerDialogueOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &239965625291294787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239965625291294782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 218.83, y: 13.89, z: 184.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &239965625291294786
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239965625291294782}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &239965625291294785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239965625291294782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &239965625291294784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239965625291294782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2deea5c9149a5e945bfb0040228cd16d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogBoxText: {fileID: 0}
+  talked: 0
+  talkedWithKing: 0
+  acceptButton: {fileID: 0}
+  s:
+  - 'Dear adventurer from the far land... '
+  - 'I, Nihil, prince of the Eldian Kingdom, have a request for you. '
+  - 'My father, the great Gregorius III, was a kind King loved by everyone of the
+    Eldian Kingdom. '
+  - 'But one year ago, he went into a cave located in the depth of the meadow outside
+    the city, and never returned back. '
+  - 'And most importantly, he brought the royal wand with him, symbol of King''s
+    power, now lost with him inside that cave. '
+  - 'Men and troops were sent to find him... none returned back. '
+  - 'But the Eldian Kingdom can''t continue without a King! Our enemies are approaching
+    us at the borders of our Kingdom! And without the royal wand, even though I''m
+    the direct heir, I can''t become the King! '
+  - 'Dear adventurer, I request you to go to the cave, find what happened to my father,
+    and retrieve the royal wand.  '
+  - 'I will wait for your news. '
+--- !u!114 &239965625291294783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239965625291294782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43568aec1504484bafdfe581a44c288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements:
+    speechPanel: {fileID: 0}
+    speakerNameText: {fileID: 0}
+    speechText: {fileID: 0}
+  isWaitingForUserInput: 0
