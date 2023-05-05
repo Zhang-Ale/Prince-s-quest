@@ -46,7 +46,13 @@ public class ThirdPersonMovement : Subject
         //walk
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        if (direction.x != 0 || direction.z != 0 && isGrounded)
+        {
+            NotifyObservers(PlayerActions.Walk);
+        }
+
         if (direction.magnitude >= 1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;

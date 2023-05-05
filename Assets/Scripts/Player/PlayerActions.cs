@@ -2,7 +2,7 @@
 public enum PlayerActions
 {
     Jump, 
-    Collect, 
+    Walk, 
     Button, 
     DialogueStart,
     DialogueOver,
