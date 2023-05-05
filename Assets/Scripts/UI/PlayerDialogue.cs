@@ -10,7 +10,8 @@ public class PlayerDialogue : Subject
     public TextMeshProUGUI dialogBoxText;
     private bool _isPlayerInside;
     public bool talked = false;
-    public bool talkedWithKing; 
+    public bool talkedWithKing;
+    public GameObject acceptButton; 
     private void Start()
     {
         dialogue = DialogueSystem.instance;
@@ -32,25 +33,34 @@ public class PlayerDialogue : Subject
             {
                 if(!dialogue.isSpeaking || dialogue.isWaitingForUserInput)
                 {
-                    if (index == 1)
+                    if (index == 8)
                     {
-                        
+                        acceptButton.SetActive(true); 
                     }
-
-                    if (index >= s.Length)
+                    else
                     {
-                        dialogBox.SetActive(false);
-                        dialogBoxText.text = "- Click to continue -";
-                        //allow the player to move 
-                        talkedWithKing = true; 
-                        return; 
-                    }
+                        if (index >= s.Length)
+                        {
+                            dialogBox.SetActive(false);
+                            dialogBoxText.text = "- Click to continue -";
+                            //allow the player to move 
+                            talkedWithKing = true;
+                            return;
+                        }
 
-                    Say(s [index]);
-                    index++;
+                        Say(s[index]);
+                        index++;
+                    }                   
                 }
             }
         }
+    }
+    public void AcceptQuest()
+    {
+        //play sound
+        acceptButton.SetActive(false);
+        Say(s[index]);
+        index++; 
     }
 
     void Say(string s)
@@ -69,6 +79,8 @@ public class PlayerDialogue : Subject
             _isPlayerInside = true;
             dialogBox.SetActive(true);
             NotifyObservers(PlayerActions.Dialogue);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
         }
     }
 
@@ -76,6 +88,8 @@ public class PlayerDialogue : Subject
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             _isPlayerInside = false;
             talked = true;
         }
