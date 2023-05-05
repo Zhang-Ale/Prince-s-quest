@@ -44,6 +44,8 @@ public class UIManager : Subject
 
     public void FadeIn()
     {
+        NotifyObservers(PlayerActions.Button);
+        NotifyObservers(PlayerActions.DialogueStart);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         ReadScriptButton.SetActive(false);
@@ -57,6 +59,7 @@ public class UIManager : Subject
 
     public void FadeOut()
     {
+        NotifyObservers(PlayerActions.DialogueOver);
         CloseScriptButton.SetActive(false);
         CanvasGroup canvGroup = Story.GetComponent<CanvasGroup>();
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 1 : 0));

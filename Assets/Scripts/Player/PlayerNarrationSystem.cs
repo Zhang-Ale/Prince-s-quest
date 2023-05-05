@@ -12,6 +12,7 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     AudioSource _audioPlayer;
     public AudioClip _jumpingAudioClip;
     public AudioClip _collectAudioClip;
+    public AudioClip _buttonAudioClip;
 
     void Awake()
     {
@@ -45,8 +46,18 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
                 _audioPlayer.Play();
                 return;
 
-            case (PlayerActions.Dialogue):
-                //set player movement to 0
+            case (PlayerActions.Button):
+                _audioPlayer.clip = _buttonAudioClip;
+                _audioPlayer.Play();
+                return;
+
+            case (PlayerActions.DialogueStart):
+                //freeze player movement
+                return;
+
+            case (PlayerActions.DialogueOver):
+                //unfreeze player movement
+                return; 
 
             default:
                 return;         

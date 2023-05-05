@@ -43,7 +43,7 @@ public class PlayerDialogue : Subject
                         {
                             dialogBox.SetActive(false);
                             dialogBoxText.text = "- Click to continue -";
-                            //allow the player to move 
+                            NotifyObservers(PlayerActions.DialogueOver);
                             talkedWithKing = true;
                             return;
                         }
@@ -57,7 +57,7 @@ public class PlayerDialogue : Subject
     }
     public void AcceptQuest()
     {
-        //play sound
+        NotifyObservers(PlayerActions.Button);
         acceptButton.SetActive(false);
         Say(s[index]);
         index++; 
@@ -78,7 +78,7 @@ public class PlayerDialogue : Subject
         {
             _isPlayerInside = true;
             dialogBox.SetActive(true);
-            NotifyObservers(PlayerActions.Dialogue);
+            NotifyObservers(PlayerActions.DialogueStart);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true; 
         }
