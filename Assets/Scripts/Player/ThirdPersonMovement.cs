@@ -13,6 +13,7 @@ public class ThirdPersonMovement : Subject
     Vector3 velocity;
     bool isGrounded;
     bool isJumpPressed;
+    public bool isWalking; 
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -20,6 +21,7 @@ public class ThirdPersonMovement : Subject
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    public AudioSource AS; 
 
     void Update()
     {
@@ -50,7 +52,16 @@ public class ThirdPersonMovement : Subject
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         if (direction.x != 0 || direction.z != 0 && isGrounded)
         {
-            NotifyObservers(PlayerActions.Walk);
+            isWalking = true;
+            if (!AS.isPlaying)
+            {
+                NotifyObservers(PlayerActions.Walk);
+            }
+        }
+        else
+        {
+            NotifyObservers(PlayerActions.StopWalk);
+            isWalking = false;
         }
 
         if (direction.magnitude >= 1f)

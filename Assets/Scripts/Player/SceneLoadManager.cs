@@ -20,11 +20,14 @@ public class SceneLoadManager : Subject
 
     void Update()
     {
-
-        if (PD.talkedWithKing)
+        if(PD != null)
         {
-            LoadNextScene(); 
+            if (PD.talkedWithKing)
+            {
+                LoadNextScene();
+            }
         }
+        
     }
 
     public void LoadNextScene()
@@ -37,7 +40,8 @@ public class SceneLoadManager : Subject
         anim.enabled = true; 
         NotifyObservers(PlayerActions.Button);
         MenuCanvas.SetActive(false);
-        kingTrigger.SetActive(true); 
+        kingTrigger.SetActive(true);
+        kingTrigger.GetComponent<PlayerDialogue>()._isPlayerInside = true; 
     }
 
 

@@ -14,10 +14,10 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     AudioSource _audioPlayer;
     public AudioClip _jumpingAudioClip;
     public AudioClip _buttonAudioClip;
-    public AudioClip _groundFootstepAudioClip;
-    public AudioClip _caveFootstepAudioClip;
-    public AudioClip _dungeonFootstepAudioClip;
-
+    public AudioClip[] _groundFootstepAudioClip;
+    public AudioClip[] _caveFootstepAudioClip;
+    public AudioClip[] _dungeonFootstepAudioClip;
+    public ThirdPersonMovement TPM; 
     void Awake()
     {
         _audioPlayer = GetComponent<AudioSource>();
@@ -49,18 +49,22 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
             case (PlayerActions.Walk):
                 if (index == 1)
                 {
-                    _audioPlayer.clip = _groundFootstepAudioClip;
+                    _audioPlayer.clip = _groundFootstepAudioClip[Random.Range(0, _groundFootstepAudioClip.Length)];
                 }
                 if (index == 2)
                 {
-                    _audioPlayer.clip = _caveFootstepAudioClip;
+                    _audioPlayer.clip = _caveFootstepAudioClip[Random.Range(0, _caveFootstepAudioClip.Length)];
                 }
                 if (index == 3)
                 {
-                    _audioPlayer.clip = _dungeonFootstepAudioClip;
+                    _audioPlayer.clip = _dungeonFootstepAudioClip[Random.Range(0, _dungeonFootstepAudioClip.Length)];
                 }
-
                 _audioPlayer.Play();
+                return;
+
+
+            case (PlayerActions.StopWalk):
+                _audioPlayer.Stop();
                 return;
 
             case (PlayerActions.Button):

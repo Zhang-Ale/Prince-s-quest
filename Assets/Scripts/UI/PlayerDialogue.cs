@@ -8,7 +8,7 @@ public class PlayerDialogue : Subject
     DialogueSystem dialogue;
     public GameObject dialogBox;
     public TextMeshProUGUI dialogBoxText;
-    private bool _isPlayerInside;
+    public bool _isPlayerInside;
     public bool talked = false;
     public bool talkedWithKing;
     public GameObject acceptButton; 
@@ -27,6 +27,10 @@ public class PlayerDialogue : Subject
 
     void Update()
     {
+        dialogBox.SetActive(true);
+        NotifyObservers(PlayerActions.DialogueStart);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true; 
         if (_isPlayerInside)
         {
             if (Input.GetMouseButtonDown(0))
@@ -42,7 +46,7 @@ public class PlayerDialogue : Subject
                         if (index >= s.Length)
                         {
                             dialogBox.SetActive(false);
-                            dialogBoxText.text = "- Click to continue -";
+                            dialogBoxText.text = "- Teleporting -";
                             NotifyObservers(PlayerActions.DialogueOver);
                             talkedWithKing = true;
                             return;
@@ -58,9 +62,9 @@ public class PlayerDialogue : Subject
     public void AcceptQuest()
     {
         NotifyObservers(PlayerActions.Button);
-        acceptButton.SetActive(false);
         Say(s[index]);
-        index++; 
+        index++;
+        acceptButton.SetActive(false);
     }
 
     void Say(string s)
@@ -84,7 +88,7 @@ public class PlayerDialogue : Subject
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
