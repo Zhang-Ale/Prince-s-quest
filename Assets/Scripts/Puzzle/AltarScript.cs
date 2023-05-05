@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class AltarScript : MonoBehaviour
 {
-    bool getKey; 
-    Animator anim; 
+    public bool getKey; 
+    Animator anim;
+    ParticleSystem fog; 
     void Start()
     {
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+        fog = GetComponentInChildren<ParticleSystem>(); 
     }
 
     void Update()
     {
         if (getKey)
         {
-            anim.SetTrigger("_altarDown"); 
+            anim.SetTrigger("_altarDown");
+            fog.Play(); 
         }
     }
 }
