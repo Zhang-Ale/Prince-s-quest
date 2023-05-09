@@ -789,6 +789,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1689711959423496719, guid: 5c8da32540a1748838da34adcf792fd8, type: 3}
+      propertyPath: sprint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2348239710684198089, guid: 5c8da32540a1748838da34adcf792fd8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -836,6 +840,10 @@ PrefabInstance:
     - target: {fileID: 3160769648983305843, guid: 5c8da32540a1748838da34adcf792fd8, type: 3}
       propertyPath: m_Name
       value: playertouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160769648983305848, guid: 5c8da32540a1748838da34adcf792fd8, type: 3}
+      propertyPath: MoveSpeed
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3160769648983305848, guid: 5c8da32540a1748838da34adcf792fd8, type: 3}
       propertyPath: LandingAudioClip
