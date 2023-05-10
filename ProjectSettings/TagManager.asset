@@ -9,6 +9,8 @@ TagManager:
   - MiddlePosition
   - Monument
   - Script
+  - CinemachineTarget
+  - Key
   layers:
   - Default
   - TransparentFX

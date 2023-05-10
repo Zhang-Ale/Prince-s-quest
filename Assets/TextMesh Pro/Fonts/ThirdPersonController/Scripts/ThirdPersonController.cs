@@ -12,7 +12,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : Subject
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -49,10 +49,10 @@ namespace StarterAssets
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
-
+        public bool isWalking; 
         [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
-
+        public AudioSource AS; 
         [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
         public float GroundedRadius = 0.28f;
 
@@ -250,6 +250,20 @@ namespace StarterAssets
 
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+            if (inputDirection.x != 0 || inputDirection.z != 0 && Grounded)
+            {
+                isWalking = true;
+                if (!AS.isPlaying)
+                {
+                    NotifyObservers(PlayerActions.Walk);
+                }
+            }
+            else
+            {
+                NotifyObservers(PlayerActions.StopWalk);
+                isWalking = false;
+            }
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving

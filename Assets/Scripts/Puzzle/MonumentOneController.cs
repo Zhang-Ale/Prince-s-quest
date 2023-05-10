@@ -14,7 +14,7 @@ public class MonumentOneController : MonoBehaviour
     public LayerMask layerMask;
     public bool hit; 
     public Material normalMat, greenMat;
-    public bool touchingMonument; 
+    public bool touchingMonument;
 
     void Start()
     {
@@ -72,7 +72,7 @@ public class MonumentOneController : MonoBehaviour
         if (Physics.Raycast(ray, out hitData, 10, layerMask))
         {
             hit = true;
-            LightSensor.GetComponent<MeshRenderer>().material = greenMat; 
+            LightSensor.GetComponent<MeshRenderer>().material = greenMat;
         }
     }
     private void OnTriggerEnter(Collider other)

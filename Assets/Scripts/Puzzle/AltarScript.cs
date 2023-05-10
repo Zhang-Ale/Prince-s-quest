@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AltarScript : MonoBehaviour
 {
-    public bool getKey; 
     Animator anim;
-    ParticleSystem fog; 
+    ParticleSystem fog;
+    public MonumentOneController MC1; 
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -15,10 +15,18 @@ public class AltarScript : MonoBehaviour
 
     void Update()
     {
-        if (getKey)
+        if (MC1.hit)
         {
-            anim.SetTrigger("_altarDown");
+            anim.SetTrigger("_altarUp");
             fog.Play(); 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            anim.SetTrigger("_altarUp"); 
         }
     }
 }
