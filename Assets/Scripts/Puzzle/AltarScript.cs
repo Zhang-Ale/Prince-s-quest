@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class AltarScript : MonoBehaviour
 {
-    Animator anim;
-    ParticleSystem fog;
-    public MonumentOneController MC1; 
+    public Animator[] anim;
+    public GameObject[] fog;
+    public MonumentOneController[] MC;
+    
     void Start()
     {
-        anim = GetComponent<Animator>();
-        fog = GetComponentInChildren<ParticleSystem>(); 
+
     }
 
     void Update()
     {
-        if (this.name == "Altar1" && MC1.hit)
+        if (MC[0].hit)
         {
-            anim.SetTrigger("_altarUp");
-            fog.Play(); 
+            anim[0].SetTrigger("_altarDown");
+            fog[0].SetActive(true); 
+        }
+        if (MC[1].hit)
+        {
+            anim[1].SetTrigger("_altarDown");
+            fog[1].SetActive(true);
+        }
+        if (MC[2].hit)
+        {
+            anim[2].SetTrigger("_altarDown");
+            fog[2].SetActive(true);
+        }
+        if (MC[3].hit)
+        {
+            anim[3].SetTrigger("_altarDown");
+            fog[3].SetActive(true);
         }
     }
 }

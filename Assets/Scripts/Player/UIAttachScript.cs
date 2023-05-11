@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIAttachScript : Subject
 {
     public GameObject ReadButton;
-    public GameObject key1, key2, key3, key4;
+    public GameObject[] key;
     public GameObject currentScript; 
     GameObject currentKey;
     public GameObject getKeyButton;
@@ -15,8 +15,9 @@ public class UIAttachScript : Subject
     public GameObject enterCaveButton;
     public int keyNumber;
     public TextMeshProUGUI keyNoText;
-    public Animator altarAnim1, altarAnim2, altarAnim3, altarAnim4;
-    public ParticleSystem fog1, fog2, fog3, fog4;
+    public Animator[] altarAnim;
+    public ParticleSystem[] fog;
+    public GameObject[] lightRay; 
     void Start()
     {
         currentKey = null;
@@ -30,32 +31,37 @@ public class UIAttachScript : Subject
 
     public void GetKey()
     {
-        if(currentKey = key1)
-        {
-            altarAnim1.SetTrigger("_altarUp");
-            fog1.Play(); 
-        }
-        if (currentKey = key2)
-        {
-            altarAnim2.SetTrigger("_altarUp");
-            fog2.Play();
-        }
-        if (currentKey = key3)
-        {
-            altarAnim3.SetTrigger("_altarUp");
-            fog3.Play();
-        }
-        if (currentKey = key4)
-        {
-            altarAnim4.SetTrigger("_altarUp");
-            fog4.Play();
-        }
-
-        currentKey.SetActive(false); 
-        currentKey = null; 
-        getKeyButton.SetActive(false);
         keyNumber += 1;
-        keyNoText.text = keyNumber.ToString(); 
+        keyNoText.text = keyNumber.ToString();
+        currentKey.SetActive(false);
+        if (currentKey = key[0])
+        {
+            altarAnim[0].SetTrigger("_altarUp");
+            fog[0].Play();
+            lightRay[0].SetActive(false); 
+        }
+        if (currentKey = key[1])
+        {
+            altarAnim[1].SetTrigger("_altarUp");
+            fog[1].Play();
+            lightRay[1].SetActive(false);
+        }
+        if (currentKey = key[2])
+        {
+            altarAnim[2].SetTrigger("_altarUp");
+            fog[2].Play();
+            lightRay[2].SetActive(false);
+        }
+        if (currentKey = key[3])
+        {
+            altarAnim[3].SetTrigger("_altarUp");
+            fog[3].Play();
+            lightRay[3].SetActive(false);
+        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        getKeyButton.SetActive(false);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,33 +81,33 @@ public class UIAttachScript : Subject
             ReadButton.SetActive(true);         
         }
 
-        if(other.gameObject == key1)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            getKeyButton.SetActive(true); 
-            key1 = currentKey; 
-        }
-        if (other.gameObject == key2)
+        if(other.gameObject == key[0])
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             getKeyButton.SetActive(true);
-            key2 = currentKey;
+            currentKey = other.gameObject;
         }
-        if (other.gameObject == key3)
+        if (other.gameObject == key[1])
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             getKeyButton.SetActive(true);
-            key3 = currentKey;
+            currentKey = other.gameObject;
         }
-        if (other.gameObject == key4)
+        if (other.gameObject == key[2])
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             getKeyButton.SetActive(true);
-            key4 = currentKey;
+            currentKey = other.gameObject;
+        }
+        if (other.gameObject == key[3])
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            getKeyButton.SetActive(true);
+            currentKey = other.gameObject;
         }
 
         if(other.gameObject.tag == "ToCaveTeleport" || other.gameObject.tag == "ToFinalTeleport")
@@ -124,7 +130,7 @@ public class UIAttachScript : Subject
             currentScript = null;
         }
 
-        if (other.gameObject == key1 || key2 || key3 ||key4)
+        if (other.gameObject.tag == "Key")
         {
             currentKey = null;
             getKeyButton.SetActive(false);

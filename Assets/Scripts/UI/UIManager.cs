@@ -16,6 +16,7 @@ public class UIManager : Subject
     public GameObject feedbackText;
     public UIAttachScript UAS;
     bool clickedOnce = false;
+    public GameObject caveBlock; 
 
     void Start()
     {
@@ -70,18 +71,19 @@ public class UIManager : Subject
         onClickEnterCave.SetActive(true);
         CanvasGroup canvGroup = feedbackText.GetComponent<CanvasGroup>();
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 0 : 1, 0.25f));
-        clickedOnce = true; 
+        clickedOnce = true;
+        TextMeshProUGUI _text = feedbackText.GetComponentInChildren<TextMeshProUGUI>();
 
-        if(UAS.keyNumber != 4 && clickedOnce)
+        if (UAS.keyNumber != 4 && clickedOnce)
         {
-            TextMeshProUGUI _text = feedbackText.GetComponentInChildren<TextMeshProUGUI>(); 
             _text.text = "Insufficient keys"; 
         }
 
         if(UAS.keyNumber == 4 && clickedOnce)
         {
-            onClickEnterCave.SetActive(false);
-            //cave block breaks
+            onClickEnterCave.SetActive(false); 
+            _text.text = "Sufficient keys";
+            caveBlock.SetActive(false); 
         }
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 1 : 0, 4f));
     }
