@@ -17,7 +17,7 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     public AudioClip[] _groundFootstepAudioClip;
     public AudioClip[] _caveFootstepAudioClip;
     public AudioClip[] _dungeonFootstepAudioClip;
-    public ThirdPersonMovement TPM; 
+
     void Awake()
     {
         _audioPlayer = GetComponent<AudioSource>();
