@@ -152,7 +152,8 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
 
-            AS = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<AudioSource>(); 
+            Transform child = _mainCamera.transform.GetChild(0); 
+            AS = child.GetComponent<AudioSource>(); 
         }
 
         private void Update()
