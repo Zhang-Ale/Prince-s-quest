@@ -49,7 +49,8 @@ namespace StarterAssets
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
-        public bool isWalking; 
+        public bool isWalking;
+ 
         [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
         public AudioSource AS; 
@@ -158,12 +159,13 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            Move();          
         }
 
         private void LateUpdate()
         {
             CameraRotation();
+            
         }
 
         private void AssignAnimationIDs()

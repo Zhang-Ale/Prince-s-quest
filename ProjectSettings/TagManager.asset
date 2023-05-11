@@ -11,6 +11,9 @@ TagManager:
   - Script
   - CinemachineTarget
   - Key
+  - ToCaveTeleport
+  - ToGroundTeleport
+  - ToFinalTeleport
   layers:
   - Default
   - TransparentFX

@@ -464,14 +464,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2301861929639614273, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+    - target: {fileID: 334936456, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1718524022}
+    - target: {fileID: 1562998283, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1718524022}
+    - target: {fileID: 1566560447, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2301861930061019870, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1659487235, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1718524022}
+    - target: {fileID: 2134073877, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1718524022}
     - target: {fileID: 2301861930061019873, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -560,50 +572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2301861930852918826, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 147.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930852918827, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_Color.a
-      value: 0.7647059
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930852918829, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930923646068, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -337.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930923646068, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 27.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930923646069, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_fontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930923646069, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930992712429, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -23.799997
-      objectReference: {fileID: 0}
-    - target: {fileID: 2301861930992712429, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -28.100002
-      objectReference: {fileID: 0}
     - target: {fileID: 7507129950995267086, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 185631391}
-    - target: {fileID: 7507129950995267086, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AcceptQuest
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
 --- !u!1 &404681180 stripped
@@ -1215,7 +1187,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -279}
-  m_SizeDelta: {x: 172.4, y: 49}
+  m_SizeDelta: {x: 219.1, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177241785
 MonoBehaviour:
@@ -1435,7 +1407,6 @@ MonoBehaviour:
   - {fileID: 0}
   _dungeonFootstepAudioClip:
   - {fileID: 0}
-  TPM: {fileID: 0}
 --- !u!82 &1718524024
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1833,7 +1804,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -128}
-  m_SizeDelta: {x: 172.4, y: 49}
+  m_SizeDelta: {x: 219.1, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065025442
 MonoBehaviour:

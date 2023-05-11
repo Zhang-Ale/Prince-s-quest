@@ -6,45 +6,26 @@ using TMPro;
 
 public class UIManager : Subject
 {
-    public bool animationStart;
     private bool mFaded = false;
     public float Duration = 1f;
     public GameObject Story;
     public GameObject ReadScriptButton;
     public GameObject CloseScriptButton;
     public GameObject scriptText;
-    ScriptStories SS;
     public GameObject onClickEnterCave;
     public GameObject feedbackText;
     public UIAttachScript UAS;
-    bool clickedOnce = false; 
+    bool clickedOnce = false;
 
     void Start()
     {
-        SS = GetComponent<ScriptStories>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
     }
 
     void Update()
     {
-        if (animationStart)
-        {
-            PlayAnimation(); 
-        }
-    }
 
-    public void PlayAnimation()
-    {
-        //play the intro video animation 
-        //if left two times click, esc button appears, press it to skip animation
-    }
-
-    public void SkipAnimation()
-    {
-        //call the gameobject with VideoPlayer
-        //set the video of gameobject to null
-        //set disactive the gameobject with VideoPlayer 
     }
 
     public void FadeIn()
@@ -56,22 +37,6 @@ public class UIManager : Subject
         ReadScriptButton.SetActive(false);
         Story.SetActive(true);
         TextMeshProUGUI script = scriptText.GetComponent<TextMeshProUGUI>();
-        if (UAS.currentScript.name == "Script1")
-        {
-            script.text = SS.ScriptOne;
-        }
-        if (UAS.currentScript.name == "Script2")
-        {
-            script.text = SS.ScriptTwo;
-        }
-        if (UAS.currentScript.name == "Script3")
-        {
-            script.text = SS.ScriptThree;
-        }
-        if (UAS.currentScript.name == "Script4")
-        {
-            script.text = SS.ScriptFour;
-        }
         CloseScriptButton.SetActive(true);
         CanvasGroup canvGroup = Story.GetComponent<CanvasGroup>();
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 0 : 1, 0.25f));
@@ -80,7 +45,7 @@ public class UIManager : Subject
     public void FadeOut()
     {
         NotifyObservers(PlayerActions.DialogueOver);
-        CloseScriptButton.SetActive(false);
+        CloseScriptButton.SetActive(false);  
         CanvasGroup canvGroup = Story.GetComponent<CanvasGroup>();
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 1 : 0, 0.25f));
         Story.SetActive(false);

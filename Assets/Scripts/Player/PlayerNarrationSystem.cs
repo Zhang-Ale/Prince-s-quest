@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using StarterAssets; 
 
 public class PlayerNarrationSystem : MonoBehaviour, IObserver
 {
@@ -17,11 +18,12 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     public AudioClip[] _groundFootstepAudioClip;
     public AudioClip[] _caveFootstepAudioClip;
     public AudioClip[] _dungeonFootstepAudioClip;
-
+    ThirdPersonController TPC; 
     void Awake()
     {
         _audioPlayer = GetComponent<AudioSource>();
         index = SceneManager.GetActiveScene().buildIndex;
+        TPC = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>(); 
     }
 
     public void OnNotify(PlayerActions action)
@@ -73,11 +75,11 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
                 return;
 
             case (PlayerActions.DialogueStart):
-                //freeze player movement
+                TPC.enabled = false;
                 return;
 
             case (PlayerActions.DialogueOver):
-                //unfreeze player movement
+                TPC.enabled = true; 
                 return; 
 
             default:

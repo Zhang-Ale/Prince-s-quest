@@ -8,4 +8,5 @@ public class ScriptStories : MonoBehaviour
     public string ScriptTwo = "";
     public string ScriptThree= "";
     public string ScriptFour = "";
+    public string ScriptFive = "";
 }

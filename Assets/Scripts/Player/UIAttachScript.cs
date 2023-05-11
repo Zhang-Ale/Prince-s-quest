@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIAttachScript : Subject
 {
@@ -16,7 +17,6 @@ public class UIAttachScript : Subject
     public TextMeshProUGUI keyNoText;
     public Animator altarAnim1, altarAnim2, altarAnim3, altarAnim4;
     public ParticleSystem fog1, fog2, fog3, fog4;
-
     void Start()
     {
         currentKey = null;
@@ -103,6 +103,15 @@ public class UIAttachScript : Subject
             getKeyButton.SetActive(true);
             key4 = currentKey;
         }
+
+        if(other.gameObject.tag == "ToCaveTeleport" || other.gameObject.tag == "ToFinalTeleport")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        }
+        if (other.gameObject.tag == "ToGroundTeleport")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -112,6 +121,7 @@ public class UIAttachScript : Subject
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             ReadButton.SetActive(false);
+            currentScript = null;
         }
 
         if (other.gameObject == key1 || key2 || key3 ||key4)

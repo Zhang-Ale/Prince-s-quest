@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay scenes/first_scene.unity
     guid: 98069e6af3a8c7b4695577be2afc6b78
+  - enabled: 1
+    path: Assets/Scenes/Gameplay scenes/cavescene.unity
+    guid: 23cc232bcaa074843b3dc7578eadac7d
+  - enabled: 1
+    path: Assets/Scenes/Gameplay scenes/final_scene.unity
+    guid: d4ecc4661a3c64fb38020acd66f10848
   m_configObjects: {}
