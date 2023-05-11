@@ -3,7 +3,7 @@
 **Student:** Olubunmi Adeloye, HongCheng Zhang. 
 
 **How to play:** 
-WASD to move, Space to jump, etc.. 
+WASD to move, Click buttons to interact. 
 
 **Game goal:**
 Complete the quest from the King. 
