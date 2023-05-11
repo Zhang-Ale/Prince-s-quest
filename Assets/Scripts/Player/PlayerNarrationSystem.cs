@@ -10,8 +10,8 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     [SerializeField] int _jumpCount = 0;
     int _jumpAudioThreshold = 3;
     Coroutine _currentJumpResetRoutine = null;
-    int index; 
-
+    int index;
+    public AudioSource backgroundMusic; 
     AudioSource _audioPlayer;
     public AudioClip _jumpingAudioClip;
     public AudioClip _buttonAudioClip;
@@ -19,11 +19,24 @@ public class PlayerNarrationSystem : MonoBehaviour, IObserver
     public AudioClip[] _caveFootstepAudioClip;
     public AudioClip[] _dungeonFootstepAudioClip;
     ThirdPersonController TPC; 
-    void Awake()
+    void Start()
     {
         _audioPlayer = GetComponent<AudioSource>();
         index = SceneManager.GetActiveScene().buildIndex;
         TPC = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>(); 
+    }
+
+    void Update()
+    {
+        if (!backgroundMusic.isPlaying)
+        {
+            Invoke("PlayMusic", 5); 
+        }
+    }
+
+    void PlayMusic()
+    {
+        backgroundMusic.Play(); 
     }
 
     public void OnNotify(PlayerActions action)

@@ -247,8 +247,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 404681181}
     - target: {fileID: 239965625291294784, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
+      propertyPath: s.Array.data[0]
+      value: 'Dear adventurer from the far land, what''s your name? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 239965625291294784, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
+      propertyPath: s.Array.data[1]
+      value: 'Dear Astrid! I, Nihil, prince of the Eldian Kingdom, have a request
+        for you. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 239965625291294784, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
       propertyPath: s.Array.data[5]
       value: 'Men and soldiers were sent to find him... none returned back. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 239965625291294784, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
+      propertyPath: s.Array.data[7]
+      value: 'Dear Astrid, I request you to go to the cave, find what happened to
+        my father, and retrieve the royal wand.  '
       objectReference: {fileID: 0}
     - target: {fileID: 239965625291294787, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
       propertyPath: m_RootOrder
@@ -468,6 +482,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1718524022}
+    - target: {fileID: 916457880, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1562998283, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -492,6 +510,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1718524022}
+    - target: {fileID: 2301861930061019870, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2301861930061019873, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -584,6 +606,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 185631391}
+    - target: {fileID: 7745280149193157659, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
 --- !u!1 &404681180 stripped
@@ -1400,13 +1426,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718524018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13012b735fdfeb342802ab4ef2ad1a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSubject: {fileID: 1718524022}
   _jumpCount: 0
+  backgroundMusic: {fileID: 0}
   _jumpingAudioClip: {fileID: 0}
   _buttonAudioClip: {fileID: 8300000, guid: e5da5d8871cee804c97d853d9873fa96, type: 3}
   _groundFootstepAudioClip:
@@ -1425,11 +1452,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: d9e22aa3816ace440bc4d4290db19cae, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

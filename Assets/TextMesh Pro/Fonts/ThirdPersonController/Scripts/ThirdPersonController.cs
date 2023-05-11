@@ -151,6 +151,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            AS = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<AudioSource>(); 
         }
 
         private void Update()

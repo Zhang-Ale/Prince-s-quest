@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement; 
 
 public class PlayerDialogue : Subject
 {
@@ -11,11 +12,20 @@ public class PlayerDialogue : Subject
     public bool _isPlayerInside;
     public bool talked = false;
     public bool talkedWithKing;
-    public GameObject acceptButton; 
+    public GameObject acceptButton;
+    TextMeshProUGUI acceptButtonText;
+    bool canAccept;
+    public GameObject princeName;
+    public FinalEnding FE;
+    public GameObject option1, option2, ending1, ending2;
+    int sceneIndex; 
+
     private void Start()
     {
         dialogue = DialogueSystem.instance;
-        talkedWithKing = false; 
+        talkedWithKing = false;
+        acceptButtonText = acceptButton.GetComponentInChildren<TextMeshProUGUI>();
+        sceneIndex = SceneManager.GetActiveScene().buildIndex; 
     }
 
     public string[] s = new string[]
@@ -32,39 +42,106 @@ public class PlayerDialogue : Subject
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true; 
         if (_isPlayerInside)
-        {
+        {  
             if (Input.GetMouseButtonDown(0))
             {
                 if(!dialogue.isSpeaking || dialogue.isWaitingForUserInput)
                 {
-                    if (index == 8)
+                    if (sceneIndex == 0)
                     {
-                        acceptButton.SetActive(true); 
+                        if (index == 0)
+                        {
+                            acceptButtonText.text = "My name is Astrid. ";
+                            acceptButton.SetActive(true);
+                            canAccept = false;
+                        }
+
+                        if (index == 8)
+                        {
+                            acceptButtonText.text = "I accept the quest. ";
+                            acceptButton.SetActive(true);
+                            canAccept = true;
+                        }
+                        else
+                        {
+                            if (index >= s.Length)
+                            {
+                                dialogBox.SetActive(false);
+                                dialogBoxText.text = "- Teleporting -";
+                                NotifyObservers(PlayerActions.DialogueOver);
+                                talkedWithKing = true;
+                                return;
+                            }
+
+                            Say(s[index]);
+                            index++;
+                        }
                     }
-                    else
+                    if(sceneIndex == 3)
                     {
+                        if (index == 0)
+                        {
+                            acceptButtonText.text = "So this is the wand...";
+                            acceptButton.SetActive(true);
+                            canAccept = false;
+                        }
+
+                        if(index == 2)
+                        {
+                            FE.enabled = true; 
+                        }
+
+                        if (index == 9)
+                        {
+                            option1.SetActive(true);
+                            option2.SetActive(true);
+                            canAccept = true;
+                        }
+
                         if (index >= s.Length)
                         {
                             dialogBox.SetActive(false);
-                            dialogBoxText.text = "- Teleporting -";
                             NotifyObservers(PlayerActions.DialogueOver);
-                            talkedWithKing = true;
                             return;
                         }
 
                         Say(s[index]);
                         index++;
-                    }                   
+                    }
+                                    
                 }
             }
         }
     }
+
+
     public void AcceptQuest()
     {
         NotifyObservers(PlayerActions.Button);
-        Say(s[index]);
-        index++;
         acceptButton.SetActive(false);
+        if (canAccept)
+        {
+            Say(s[index]);
+            index++;
+        }
+        else
+        {
+            index = index; 
+        }
+    }
+
+    public void HandTheWand()
+    {
+        option1.SetActive(false);
+        option2.SetActive(false);
+        ending1.SetActive(true); 
+    }
+
+    public void KeepTheWand()
+    {
+        option1.SetActive(false);
+        option2.SetActive(false);
+        ending2.SetActive(true); 
     }
 
     void Say(string s)

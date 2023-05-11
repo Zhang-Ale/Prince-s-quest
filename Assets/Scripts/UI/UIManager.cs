@@ -15,18 +15,33 @@ public class UIManager : Subject
     public GameObject onClickEnterCave;
     public GameObject feedbackText;
     public UIAttachScript UAS;
-    bool clickedOnce = false;
-    public GameObject caveBlock; 
+    int clickedOnce = 0;
+    public GameObject caveBlock;
+    TextMeshProUGUI _text; 
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; 
+        Cursor.visible = false;
+        
     }
 
     void Update()
     {
+        if(UAS != null)
+        {
+            if (UAS.keyNumber != 4 && clickedOnce >= 2)
+            {
+                _text.text = "Insufficient keys";
+            }
 
+            if (UAS.keyNumber == 4 && clickedOnce >= 2)
+            {
+                onClickEnterCave.SetActive(false);
+                _text.text = "Sufficient keys";
+                caveBlock.SetActive(false);
+            }
+        }       
     }
 
     public void FadeIn()
@@ -68,23 +83,12 @@ public class UIManager : Subject
 
     public void EnterCaveButton()
     {
-        onClickEnterCave.SetActive(true);
+        onClickEnterCave.SetActive(true); 
         CanvasGroup canvGroup = feedbackText.GetComponent<CanvasGroup>();
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 0 : 1, 0.25f));
-        clickedOnce = true;
-        TextMeshProUGUI _text = feedbackText.GetComponentInChildren<TextMeshProUGUI>();
-
-        if (UAS.keyNumber != 4 && clickedOnce)
-        {
-            _text.text = "Insufficient keys"; 
-        }
-
-        if(UAS.keyNumber == 4 && clickedOnce)
-        {
-            onClickEnterCave.SetActive(false); 
-            _text.text = "Sufficient keys";
-            caveBlock.SetActive(false); 
-        }
+        _text = feedbackText.GetComponentInChildren<TextMeshProUGUI>();
+        _text.text = "Need 4 golden keys to enter the cave";
+        clickedOnce += 1;
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 1 : 0, 4f));
     }
 }

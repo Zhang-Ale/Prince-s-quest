@@ -8,10 +8,16 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public CanvasGroup blackCanv;
     public bool gameIsPaused;
+    UIAttachScript UAS;
+
+    private void Start()
+    {
+        UAS = GameObject.FindGameObjectWithTag("Player").GetComponent<UIAttachScript>(); 
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!UAS.dead && Input.GetKeyDown(KeyCode.Escape))
         {
             gameIsPaused = !gameIsPaused;
             PauseGame();
