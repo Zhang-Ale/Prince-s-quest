@@ -19,8 +19,9 @@ public class UIAttachScript : Subject
     public GameObject[] lightRay;
     int index;
     public bool dead;
-    public GameObject finalDialogue; 
-    
+    public GameObject finalDialogue;
+    public GameObject onClickEnterCave;
+
     void Start()
     {
         index = SceneManager.GetActiveScene().buildIndex; 
@@ -95,7 +96,12 @@ public class UIAttachScript : Subject
             ReadButton.SetActive(true);         
         }
 
-        if(index == 1)
+        if (other.gameObject.tag == "Key")
+        {
+            onClickEnterCave.SetActive(true);
+        }
+
+        if (index == 1)
         {
             if (key[0] != null && other.gameObject == key[0])
             {

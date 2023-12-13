@@ -22,24 +22,34 @@ public class UIManager : Subject
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
+        Cursor.visible = false;     
     }
 
     void Update()
     {
         if(UAS != null)
         {
+            _text = feedbackText.GetComponentInChildren<TextMeshProUGUI>();
             if (UAS.keyNumber != 4 && clickedOnce >= 2)
             {
-                _text.text = "Insufficient keys";
+                _text.text = "You still need to obtain " + (4 - UAS.keyNumber).ToString() + " keys.";
             }
 
             if (UAS.keyNumber == 4 && clickedOnce >= 2)
             {
                 onClickEnterCave.SetActive(false);
-                _text.text = "Sufficient keys";
+                _text.text = "Keys condition met. You may now enter the cave";
                 caveBlock.SetActive(false);
+            }
+
+            if(Input.GetKeyDown(KeyCode.O) && Input.GetKeyDown(KeyCode.P))
+            {
+                CanvasGroup canvGroup = feedbackText.GetComponent<CanvasGroup>();
+                StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 0 : 1, 0.25f));
+                onClickEnterCave.SetActive(false);
+                _text.text = "Damn... You found the cheat code... Impressive...";
+                caveBlock.SetActive(false);
+                StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 1 : 0, 4f));
             }
         }       
     }
@@ -87,7 +97,7 @@ public class UIManager : Subject
         CanvasGroup canvGroup = feedbackText.GetComponent<CanvasGroup>();
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 0 : 1, 0.25f));
         _text = feedbackText.GetComponentInChildren<TextMeshProUGUI>();
-        _text.text = "Need 4 golden keys to enter the cave";
+        _text.text = "Need 4 golden keys to enter the cave.";
         clickedOnce += 1;
         StartCoroutine(ActionOne(canvGroup, canvGroup.alpha, mFaded ? 1 : 0, 4f));
     }
