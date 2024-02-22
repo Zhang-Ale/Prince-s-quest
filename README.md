@@ -1,4 +1,4 @@
-**Final:** _"Game name"_
+**Final:** _"Prince's quest"_
 
 **Student:** Olubunmi Adeloye, HongCheng Zhang. 
 
