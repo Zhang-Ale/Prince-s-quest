@@ -1,6 +1,6 @@
-**Final:** _"Prince's quest"_
+**Game:** _"Prince's quest"_
 
-**Student:** Olubunmi Adeloye, HongCheng Zhang. 
+**Made by:** Olubunmi Adeloye, HongCheng Zhang. 
 
 **How to play:** 
 WASD to move, Shift to sprint, Space to jump, and Mouse-click buttons to interact. 
