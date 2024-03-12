@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: elements.speakerNameText
       value: 
       objectReference: {fileID: 404681183}
+    - target: {fileID: 239965625291294783, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
+      propertyPath: elements.nextDialogueIcon
+      value: 
+      objectReference: {fileID: 1466531620}
     - target: {fileID: 239965625291294784, guid: 9edcece2bae28fd49a23f35969580549, type: 3}
       propertyPath: dialogBox
       value: 
@@ -482,38 +486,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1718524022}
-    - target: {fileID: 916457880, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1562998283, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1718524022}
-    - target: {fileID: 1566560447, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1658980722, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1658980723, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 197.91
-      objectReference: {fileID: 0}
     - target: {fileID: 1659487235, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1718524022}
-    - target: {fileID: 2134073877, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1718524022}
-    - target: {fileID: 2301861930061019870, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2301861930061019873, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -606,10 +586,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 185631391}
-    - target: {fileID: 7745280149193157659, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
 --- !u!1 &404681180 stripped
@@ -1317,6 +1293,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177241783}
   m_CullTransparentMesh: 1
+--- !u!1 &1466531620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1466531620, guid: 3a0a1dbf8e2f83f45b75cb4908c1239c, type: 3}
+  m_PrefabInstance: {fileID: 404681178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1718524018
 GameObject:
   m_ObjectHideFlags: 0
