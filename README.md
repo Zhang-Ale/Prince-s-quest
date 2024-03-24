@@ -1,4 +1,4 @@
-# Game: _"Prince's quest"_ (complete game)
+# Game: _"Prince's quest"_ 
 
 **Made by:** Olubunmi Adeloye, HongCheng Zhang. 
 
