@@ -55,6 +55,10 @@ public class PlayerDialogue : Subject
                             acceptButton.SetActive(true);
                             canAccept = false;
                         }
+                        if (index == 1)
+                        {
+                            acceptButton.SetActive(false);
+                        }
 
                         if (index == 8)
                         {
