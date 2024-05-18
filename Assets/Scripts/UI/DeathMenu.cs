@@ -27,7 +27,7 @@ public class DeathMenu : MonoBehaviour
     }
     public void RestartGame()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("cavescene");
         Time.timeScale = 1;
     }
 
